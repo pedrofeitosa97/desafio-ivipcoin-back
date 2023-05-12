@@ -1,5 +1,5 @@
-import { Request, Response, Router } from "express";
-import { createTaskController, listTasksController, updateTaskController, deleteTaskController } from "../controllers/users.controllers";
+import { Router } from "express";
+import { createTaskController,listTasksController,updateTaskController,deleteTaskController } from "../../controllers/tasks.controllers";
 
 const userRoutes: Router = Router()
 

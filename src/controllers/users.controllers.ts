@@ -1,31 +1,27 @@
 import { Request, Response } from "express";
-import createTaskService from "../services/createTasks.services";
-import listTasksService from "../services/listTasks.services";
-import updateTaskService from "../services/updateTask.services";
-import deleteTaskService from "../services/deleteTask.service";
+import registerUserService from "../services/users/registerUser.service";
+import userLoginService from "../services/users/userLogin.service";
 
-const createTaskController = async (req: Request, res: Response): Promise<Response> => {
-    const data = req.body
-    const task = await createTaskService(data)
-    return res.json(task)
-}
+const registerUserController = async (req: Request, res: Response): Promise<Response> => {
+  const { name, email, password, photoURL } = req.body;
 
-const listTasksController = async (req: Request, res: Response): Promise<Response> => {
-    const tasks = await listTasksService()
-    return res.json(tasks)
-}
+  try {
+    const user = await registerUserService({ name, email, password, photoURL });
+    return res.status(201).json(user);
+  } catch (error) {
+    return res.status(400).json({ message: "Error registering user" });
+  }
+};
 
-const updateTaskController = async (req: Request, res: Response): Promise<Response> => {
-    const data = req.body
-    const id = req.params.id
-    const updatedTask = await updateTaskService(id, data)
-    return res.json(updatedTask)
-}
+const userLoginController = async (req: Request, res: Response): Promise<Response> => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await userLoginService(email, password);
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+  };
 
-const deleteTaskController = (req: Request, res: Response): Response => {
-    const id = req.params.id
-    deleteTaskService(id)
-    return res.json({})
-}
-
-export { createTaskController, listTasksController, updateTaskController, deleteTaskController }
+export { registerUserController, userLoginController};

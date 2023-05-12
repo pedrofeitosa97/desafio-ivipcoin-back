@@ -1,7 +1,7 @@
-import iCreateTask from "../interfaces/createtask.interface"
+import iCreateTask from "../../interfaces/createtask.interface";
 import { collection, addDoc, getFirestore } from "firebase/firestore/lite";
-import { firebaseConfig } from "../server";
-import { firebaseApp } from "../server";
+import { firebaseConfig } from "../../server";
+import { firebaseApp } from "../../server";
 
 const createTaskService = async (data: iCreateTask) => {
     const db = getFirestore(firebaseApp);

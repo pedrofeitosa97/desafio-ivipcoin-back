@@ -1,5 +1,5 @@
 import { collection, getDocs, getFirestore } from "firebase/firestore/lite";
-import { firebaseApp } from "../server";
+import { firebaseApp } from "../../server";
 
 const listTasksService = async () => {
     const db = getFirestore(firebaseApp);

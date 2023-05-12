@@ -1,5 +1,5 @@
 import { getFirestore, doc, deleteDoc } from "firebase/firestore/lite";
-import { firebaseApp } from "../server";
+import { firebaseApp } from "../../server"; 
 
 const deleteTaskService = async (id: string) => {
   const db = getFirestore(firebaseApp);
