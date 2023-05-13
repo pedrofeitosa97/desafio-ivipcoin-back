@@ -1,5 +1,9 @@
 import app from "./app";
 import { initializeApp } from 'firebase/app';
+import * as admin from 'firebase-admin';
+
+
+admin.initializeApp();
 
 export const firebaseConfig = {
     apiKey: "AIzaSyARpLDnCMPNCe1ASQXDf4H2keWodSUh7dA",
