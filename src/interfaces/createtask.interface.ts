@@ -1,3 +1,4 @@
 export default interface iCreateTask {
-    task: string
+    title: string;
+    description: string
 }
