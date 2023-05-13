@@ -20,9 +20,8 @@ const registerUserService = async (userData: RegisterUserData) => {
         photoURL: userData.photoURL
     });
 
-    console.log(user)
-
-    console.log(`Registered user: ${user.uid}`);
+    console.log(user.uid)
+    
     return user;
   } catch (error) {
     console.error(error);

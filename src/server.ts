@@ -1,6 +1,5 @@
 import app from "./app";
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyARpLDnCMPNCe1ASQXDf4H2keWodSUh7dA",
@@ -13,17 +12,6 @@ export const firebaseConfig = {
   };
 
   export const firebaseApp = initializeApp(firebaseConfig);
-  const db = getFirestore(firebaseApp);
-  
-
-
-  // RECEBER LISTA DE TASKS
-  async function getTasks(db: any) {
-    const tasksCol = collection(db, 'tasks');
-    const tasksSnapshot = await getDocs(tasksCol);
-    const tasksList = tasksSnapshot.docs.map(doc => doc.data());
-    return tasksList;
-  }
 
 
 app.listen(3000, () => {
