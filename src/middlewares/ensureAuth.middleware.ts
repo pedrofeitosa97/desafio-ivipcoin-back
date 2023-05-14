@@ -4,7 +4,8 @@ import 'dotenv/config'
 
 interface DecodedJwt {
     sub: string,
-    name: string;
+    name: string,
+    picture: string
   }
 
 const ensureAuthMiddleware = async (req: any, res: Response, next: NextFunction) => {
@@ -21,9 +22,10 @@ const ensureAuthMiddleware = async (req: any, res: Response, next: NextFunction)
     
     req.user = {
         id: decodedtoken?.sub,
-        name: decodedtoken?.name
+        name: decodedtoken?.name,
+        picture: decodedtoken?.picture
     }
-          
+    
       return next()
 }
 

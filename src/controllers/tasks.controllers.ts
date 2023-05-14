@@ -8,7 +8,8 @@ const createTaskController = async (req: any, res: Response): Promise<Response> 
     const data = req.body
     const userId = req.user.id
     const username = req.user.name
-    const task = await createTaskService(data, userId, username)
+    const photourl = req.user.picture
+    const task = await createTaskService(data, userId, username, photourl)
     return res.json(task)
 }
 
