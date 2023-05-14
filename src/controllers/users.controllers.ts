@@ -21,6 +21,6 @@ const userLoginController = async (req: Request, res: Response): Promise<Respons
     } catch (error) {
       return res.status(401).json({ message: "Credenciais inválidas." });
     }
-  };
+};
 
 export { registerUserController, userLoginController};

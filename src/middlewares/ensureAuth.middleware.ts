@@ -2,6 +2,10 @@ import { Request, Response, NextFunction } from "express"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
+interface DecodedJwt {
+    sub: string,
+    name: string;
+  }
 
 const ensureAuthMiddleware = async (req: any, res: Response, next: NextFunction) => {
 
@@ -13,10 +17,11 @@ const ensureAuthMiddleware = async (req: any, res: Response, next: NextFunction)
 
     token = token.split(' ')[1]
     
-    const decodedtoken = jwt.decode(token)
+    const decodedtoken = jwt.decode(token) as DecodedJwt;
     
     req.user = {
-        id: decodedtoken?.sub
+        id: decodedtoken?.sub,
+        name: decodedtoken?.name
     }
           
       return next()

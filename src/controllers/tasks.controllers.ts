@@ -3,12 +3,12 @@ import createTaskService from "../services/tasks/createTasks.services";
 import listTasksService from "../services/tasks/listTasks.services";
 import updateTaskService from "../services/tasks/updateTask.services";
 import deleteTaskService from "../services/tasks/deleteTask.service";
-import listTaskByIdService from "../services/tasks/listTaskById.services";
 
 const createTaskController = async (req: any, res: Response): Promise<Response> => {
     const data = req.body
-    const userid = req.user.id
-    const task = await createTaskService(data, userid)
+    const userId = req.user.id
+    const username = req.user.name
+    const task = await createTaskService(data, userId, username)
     return res.json(task)
 }
 
