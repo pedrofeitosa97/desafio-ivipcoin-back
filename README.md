@@ -14,7 +14,7 @@ A nossa API foi projetada para um sistema de gerenciamento de tarefas completo, 
 | GET      | /tasks/ | Lista todas as tarefas                                     |
 | PATCH    | /tasks/:id | Edita uma tarefa pelo seu ID                            |
 | GET      | /tasks/:id | Lista uma tarefa pelo ID do usuário                     |
-| DELETE   | /tasks/:user_id | Deleta uma tarefa por ID                           |
+| DELETE   | /tasks/:id | Deleta uma tarefa por ID                           |
 
 ### 1.1. **Criação de Usuário**
 
