@@ -1,14 +1,15 @@
 import { getAuth, signInWithEmailAndPassword, signInWithCustomToken} from "firebase/auth";
+import { AppError } from "../../error";
+import { validatedBody } from "../../interfaces/createtask.interface";
 
-const userLoginService = async (email: string, password: string) => {
+const userLoginService = async (data: validatedBody) => {
   const auth = getAuth();
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
     const user = userCredential.user;
-    return user;
-  } catch (error) {
-    console.error(error);
-    throw error;
+    return [user, 200]
+  } catch (error: any) {
+    return [{message: 'Credenciais inválidas'}, 401]
   }
 };
 

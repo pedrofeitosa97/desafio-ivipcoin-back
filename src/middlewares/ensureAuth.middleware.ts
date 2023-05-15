@@ -12,10 +12,11 @@ const ensureAuthMiddleware = async (req: any, res: Response, next: NextFunction)
 
     let token = req.headers.authorization
 
+    
     if(!token) {
-        return "TOKEN INVÁLIDO!"
+      return "TOKEN INVÁLIDO!"
     }
-
+    
     token = token.split(' ')[1]
     
     const decodedtoken = jwt.decode(token) as DecodedJwt;

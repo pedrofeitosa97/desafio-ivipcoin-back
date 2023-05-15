@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ValidationError } from "yup";
 
 interface RegisterUserData {
   name: string;
@@ -14,18 +15,14 @@ const registerUserService = async (userData: RegisterUserData) => {
     const userCredential = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
     const user = userCredential.user;
 
-    // Atualiza o nome do usuário
     await updateProfile(user, {
         displayName: userData.name,
         photoURL: userData.photoURL
     });
-
-    console.log(user.uid)
     
     return user;
-  } catch (error) {
-    console.error(error);
-    throw error;
+  } catch (error: ValidationError | any) {
+    return [{message: error.code}, 401]
   }
 };
 
