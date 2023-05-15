@@ -16,3 +16,8 @@ export const createTaskSchema = yup.object().shape({
     title: yup.string().required('Um título é obrigatório.'),
     description: yup.string().required('Uma descrição é obrigatória')
 });
+
+export const updateTaskSchema = yup.object().shape({
+    title: yup.string().required('Um título é obrigatório.'),
+    description: yup.string().required('Uma descrição é obrigatória')
+});

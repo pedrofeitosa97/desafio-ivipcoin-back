@@ -19,8 +19,7 @@ const registerUserService = async (userData: RegisterUserData) => {
         displayName: userData.name,
         photoURL: userData.photoURL
     });
-    
-    return user;
+    return [user, 200]
   } catch (error: ValidationError | any) {
     return [{message: error.code}, 401]
   }

@@ -7,7 +7,6 @@ const listTasksService = async () => {
         const taskCollection = collection(db, 'tasks');
         const taskSnapshot = await getDocs(taskCollection);
         const tasks = taskSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log(tasks)
         return tasks;
     } catch (error) {
         console.error(error);

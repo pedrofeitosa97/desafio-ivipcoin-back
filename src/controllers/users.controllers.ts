@@ -21,9 +21,8 @@ const registerUserController = async (req: Request, res: Response): Promise<Resp
 const userLoginController = async (req: any, res: Response): Promise<Response> => {
   try {
     const validatedLogin = await loginSchema.validate(req.body, { abortEarly: false })
-    const user = await userLoginService(validatedLogin)
-    const [message, status]: any = user
-    return res.status(status).json(message)
+    const user: any = await userLoginService(validatedLogin)
+    return res.status(user[1]).json(user[0])
   } catch (error: ValidationError | any) {
       return res.status(401).json({ message: error.errors[0] })
     }

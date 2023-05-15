@@ -3,7 +3,7 @@ import createTaskService from "../services/tasks/createTasks.services";
 import listTasksService from "../services/tasks/listTasks.services";
 import updateTaskService from "../services/tasks/updateTask.services";
 import deleteTaskService from "../services/tasks/deleteTask.service";
-import { createTaskSchema } from "../schemas/schemas";
+import { createTaskSchema, updateTaskSchema } from "../schemas/schemas";
 import { ValidationError } from "yup";
 
 const createTaskController = async (req: any, res: Response): Promise<Response> => {
@@ -38,9 +38,14 @@ const listTaskByIdController = async (req: Request, res: Response): Promise<Resp
 const updateTaskController = async (req: Request, res: Response): Promise<Response> => {
     const data = req.body
     const id = req.params.id
-    const updatedTask = await updateTaskService(id, data)
-    const [message, status]: any = updatedTask
-    return res.status(status).json(message)
+    try {
+        const validatedUpdatedTask = await updateTaskSchema.validate(data, {abortEarly: false})
+        const updatedTask = await updateTaskService(id, validatedUpdatedTask)
+        return res.status(200).json(updatedTask)
+    } catch (error: ValidationError | any) {
+        console.log(error)
+        return res.status(400).json({message: error.errors[0]})
+    }
 }
 
 const deleteTaskController = (req: Request, res: Response): Response => {
