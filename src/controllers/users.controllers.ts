@@ -11,6 +11,7 @@ const registerUserController = async (req: Request, res: Response): Promise<Resp
     const { name, email, password, photoURL } = validatedRegister
     const user = await registerUserService({ name, email, password, photoURL });
     const [message, status]: any = user
+    console.log(message, status)
     return res.status(status).json(message);
   } catch (error: ValidationError | any) {
     console.log(error)

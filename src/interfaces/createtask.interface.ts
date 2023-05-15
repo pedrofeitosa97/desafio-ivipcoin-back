@@ -3,11 +3,16 @@ export interface iCreateTask {
     description: string
 }
 
-export interface YupError {
+export interface iYupError {
     errors: string[];
 }
 
-export interface validatedBody {
+export interface iValidatedBody {
     email: string,
     password: string
+}
+
+export interface iOwner {
+    user_id: string;
+    username: string;
 }

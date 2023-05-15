@@ -26,9 +26,10 @@ const listTasksController = async (req: Request, res: Response): Promise<Respons
 }
 
 const listTaskByIdController = async (req: Request, res: Response): Promise<Response> => {
-    const id: any = req.params.id
+    const id: string = req.params.id
     const tasks = await listTasksService();
     const filteredTasks: any = tasks.filter((task: any) => task.owner.user_id === id);
+    console.log(filteredTasks,'aqui')
     if (filteredTasks.length == 0) {
         return res.status(404).json({message:'Usuário não encontrado.'})
     }

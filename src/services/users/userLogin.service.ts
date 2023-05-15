@@ -1,8 +1,8 @@
 import { getAuth, signInWithEmailAndPassword, signInWithCustomToken} from "firebase/auth";
 import { AppError } from "../../error";
-import { validatedBody } from "../../interfaces/createtask.interface";
+import { iValidatedBody } from "../../interfaces/createtask.interface";
 
-const userLoginService = async (data: validatedBody) => {
+const userLoginService = async (data: iValidatedBody) => {
   const auth = getAuth();
   try {
     const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
