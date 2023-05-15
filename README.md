@@ -2,7 +2,7 @@
 
 A nossa API foi projetada para um sistema de gerenciamento de tarefas completo, permitindo cadastro de usuários, criação de tarefas de acordo com o usuário, edição e deleção de tarefas.
 
-Instalando Dependências
+# Instalando Dependências
 
 Clone o projeto em sua máquina e instale as dependências com o comando:
 
