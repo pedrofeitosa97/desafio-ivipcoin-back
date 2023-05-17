@@ -1,18 +1,18 @@
 export interface iCreateTask {
-    title: string;
-    description: string
+  title: string;
+  description: string;
 }
 
 export interface iYupError {
-    errors: string[];
+  errors: string[];
 }
 
 export interface iValidatedBody {
-    email: string,
-    password: string
+  email: string;
+  password: string;
 }
 
 export interface iOwner {
-    user_id: string;
-    username: string;
+  user_id: string;
+  username: string;
 }
